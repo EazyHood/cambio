@@ -1,0 +1,580 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-10-19",
+  "project": "CAMBIO",
+  "provenance": "Original synthetic English scenarios authored by the Codex research_creative agent for this task; no real participants, messages, events or personal data.",
+  "index_base": 0,
+  "unit": "One case is a pair of lists. Every expected entry labels the update at update_index against the original plan array, never against another update.",
+  "label_policy": {
+    "source_indexes": "All source lines that are legitimate alignment targets. Empty means this update has no corresponding instruction in the original plan.",
+    "alignment": "single = one target; alternatives = ambiguous choice among listed targets; multiple_required = the update touches every listed target; none = no target.",
+    "ambiguous": "True when the update needs interpretation/confirmation before a defensible edit, including conditionality, unresolved reference, contradiction or multiple targets.",
+    "cancellation": "True only when the update cancels a positive original activity/obligation, including an ambiguous target. Negating a cancellation is false.",
+    "expected_review": "A human annotation for inspecting examples, not a predicted action or product automation requirement. replace preserves the exact update text as a replacement; resolve means no unreviewed edit is defensible.",
+    "warning_labels": "Semantic test labels, not a claim a keyword rule can detect every case."
+  },
+  "cases": [
+    {
+      "id": "heldout-01",
+      "scenario": "Community theatre access",
+      "language": "en",
+      "plan": [
+        "Audience members should use the front entrance.",
+        "Performers should use the stage door.",
+        "The afternoon performance starts at 15:00.",
+        "Collect reserved tickets at the foyer desk."
+      ],
+      "updates": [
+        "Performers must now enter through the front entrance.",
+        "The afternoon performance will begin at 15:20.",
+        "Bring a light jacket for the queue."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Role is the target; the new destination duplicates a different role's old destination."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Same performance start time."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New clothing request, no source target."
+        }
+      ]
+    },
+    {
+      "id": "heldout-02",
+      "scenario": "Library zine workshop",
+      "language": "en",
+      "plan": [
+        "The zine workshop is on Tuesday at 17:00.",
+        "Bring scissors to the zine workshop.",
+        "Return borrowed books at the circulation desk.",
+        "The printer demonstration is on Wednesday at 17:00."
+      ],
+      "updates": [
+        "The zine workshop has moved to Thursday at 17:00.",
+        "Scissors will be supplied, so you do not need to bring them.",
+        "The circulation desk has a new book about printing."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Date change with identical time to another event."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "replace",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "Withdraws the personal scissors requirement."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "A book announcement is not a replacement for the book-return instruction."
+        }
+      ]
+    },
+    {
+      "id": "heldout-03",
+      "scenario": "Repair cafe booking",
+      "language": "en",
+      "plan": [
+        "Bicycle repairs are available from 10:00.",
+        "Lamp repairs are available from 10:00.",
+        "The sewing demonstration begins at 12:00.",
+        "Bring your appointment email."
+      ],
+      "updates": [
+        "Lamp repairs have been cancelled for this session.",
+        "The sewing demonstration has not been cancelled.",
+        "Please show the email confirming your appointment."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "replace",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "Target must be lamp repairs, not similar bicycle repairs."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [
+            "negated_cancellation"
+          ],
+          "note": "Reassurance of continued activity, not withdrawal."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Equivalent confirmation requirement."
+        }
+      ]
+    },
+    {
+      "id": "heldout-04",
+      "scenario": "Two shuttle departures",
+      "language": "en",
+      "plan": [
+        "The museum shuttle leaves the library at 08:30.",
+        "The garden shuttle leaves the station at 08:30.",
+        "Bring your shuttle reservation.",
+        "All riders must arrive ten minutes before departure."
+      ],
+      "updates": [
+        "It will leave from the town hall instead.",
+        "The garden shuttle now departs at 08:50.",
+        "Pack a refillable drinking bottle."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0,
+            1
+          ],
+          "alignment": "alternatives",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "ambiguous_reference"
+          ],
+          "note": "It could refer to either shuttle."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Named shuttle identifies which identical time changes."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New packing instruction."
+        }
+      ]
+    },
+    {
+      "id": "heldout-05",
+      "scenario": "Pottery workshop conditional location",
+      "language": "en",
+      "plan": [
+        "The pottery class takes place in Studio Blue.",
+        "The pottery class starts at 11:00.",
+        "Bring an apron.",
+        "Collect finished pieces the following Saturday."
+      ],
+      "updates": [
+        "We might use Studio Green if the floor in Studio Blue is still wet; we will confirm.",
+        "The pottery class now starts at 11:30.",
+        "You can collect finished pieces on Sunday instead of Saturday."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "conditional",
+            "unconfirmed"
+          ],
+          "note": "Related venue information remains contingent."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Explicit start-time update."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Collection date change refers to finished pieces, not class date."
+        }
+      ]
+    },
+    {
+      "id": "heldout-06",
+      "scenario": "Photography walk with overlapping vocabulary",
+      "language": "en",
+      "plan": [
+        "Meet the guide beside the park cafe.",
+        "Bring your camera.",
+        "Keep camera bags with you.",
+        "The photo review starts at 16:00."
+      ],
+      "updates": [
+        "Meet the guide beside the station cafe instead.",
+        "Bring a sketchbook.",
+        "Keep your printed route map with you."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Meeting point changes but remains same task."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New item does not replace camera merely because bring is shared."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New map requirement does not replace bag custody."
+        }
+      ]
+    },
+    {
+      "id": "heldout-07",
+      "scenario": "Market volunteer roles",
+      "language": "en",
+      "plan": [
+        "Stallholders collect blue badges at Desk A.",
+        "Volunteers collect green badges at Desk B.",
+        "Visitors do not need a badge.",
+        "Badge desks open at 07:00."
+      ],
+      "updates": [
+        "Volunteers should collect green badges at Desk A.",
+        "Visitors now need a yellow badge from Desk C.",
+        "Desk A will open at 07:30 instead."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Volunteer target despite destination matching stallholders."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Reverses the visitors' badge requirement, not a cancellation."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "partial_scope"
+          ],
+          "note": "Only Desk A changes; original line governs every badge desk."
+        }
+      ]
+    },
+    {
+      "id": "heldout-08",
+      "scenario": "Board-game day concurrent corrections",
+      "language": "en",
+      "plan": [
+        "The strategy tournament begins at 13:00.",
+        "The puzzle corner closes at 17:00.",
+        "Bring your own dice.",
+        "The card workshop is cancelled."
+      ],
+      "updates": [
+        "The strategy tournament begins at 14:00.",
+        "Correction: the strategy tournament begins at 13:30.",
+        "The card workshop is no longer cancelled."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "conflicting_updates"
+          ],
+          "note": "Both update lines target one original. Order is visible, but final resolution must be explicit."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "conflicting_updates"
+          ],
+          "note": "A later correction must not silently overwrite a human decision on the earlier update."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [
+            "negated_cancellation"
+          ],
+          "note": "Restores a previously cancelled workshop."
+        }
+      ]
+    },
+    {
+      "id": "heldout-09",
+      "scenario": "Picnic shared equipment",
+      "language": "en",
+      "plan": [
+        "The picnic begins at 12:00 in Oak Park.",
+        "Bring folding chairs.",
+        "Bring a picnic blanket.",
+        "The organizer will supply cups."
+      ],
+      "updates": [
+        "If the forecast changes, we could postpone the picnic; no decision has been made.",
+        "You no longer need to bring chairs or a blanket.",
+        "Please bring your own cups after all."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "conditional",
+            "unconfirmed"
+          ],
+          "note": "Possible postponement is not an actual cancellation."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1,
+            2
+          ],
+          "alignment": "multiple_required",
+          "ambiguous": true,
+          "cancellation": true,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "multiple_targets",
+            "cancellation"
+          ],
+          "note": "Withdraws two separate source requirements."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Same cups responsibility, changed from organizer to participant."
+        }
+      ]
+    },
+    {
+      "id": "heldout-10",
+      "scenario": "Music rehearsal announcements",
+      "language": "en",
+      "plan": [
+        "The choir rehearsal begins at 18:30.",
+        "The percussion rehearsal begins at 19:00.",
+        "Use the car park behind the hall.",
+        "Bring a pencil for rehearsal notes."
+      ],
+      "updates": [
+        "The rehearsal is cancelled.",
+        "The new park beside the hall has opened to the public.",
+        "Bring a pen for rehearsal notes instead of a pencil."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0,
+            1
+          ],
+          "alignment": "alternatives",
+          "ambiguous": true,
+          "cancellation": true,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "ambiguous_reference",
+            "cancellation"
+          ],
+          "note": "Unspecified rehearsal cannot be confidently assigned to choir or percussion."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Public park is not car parking; shared park and hall tokens are misleading."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Explicit replacement of the writing instrument."
+        }
+      ]
+    }
+  ],
+  "split": "heldout",
+  "usage": "Do not run, inspect model outputs or tune with these cases until implementation, preprocessing and thresholds are frozen."
+}
+

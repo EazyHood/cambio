@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#183e35">
+    <meta name="description" content="Bring a changed plan into focus. Compare instructions privately in your browser, review each update, and leave with a clear next version.">
+    <title>Cambio — Plans change. Catch up quietly.</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the workspace</a>
+
+    <header class="site-header shell">
+      <a class="brand" href="./" aria-label="Cambio home">
+        <svg class="brand-mark" viewBox="0 0 56 56" width="56" height="56" fill="none" aria-hidden="true">
+          <path d="M9 7h24v31H9z" fill="currentColor" opacity=".18"/>
+          <path d="M20 17h25v32H20z" fill="currentColor"/>
+          <path d="M15 16h11M15 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M11 41h9c10 0 16-6 16-16v-4m0 0-6 6m6-6 6 6" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-word">Cambio<span class="brand-period">.</span></span>
+      </a>
+      <p class="brand-tagline">Plans change. Catch up quietly.</p>
+      <a class="privacy-link" href="#privacy-panel">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <span>Local &amp; private</span>
+      </a>
+    </header>
+
+    <main id="main" class="shell" tabindex="-1">
+      <ol id="app-start" class="journey" aria-label="Your progress">
+        <li id="step-input" aria-current="step"><span class="journey-number" aria-hidden="true">1</span><span>Bring your plans</span></li>
+        <li id="step-review"><span class="journey-number" aria-hidden="true">2</span><span>Review the changes</span></li>
+        <li id="step-complete"><span class="journey-number" aria-hidden="true">3</span><span>Take the next version</span></li>
+      </ol>
+
+      <section id="input-view" class="view input-view" aria-labelledby="input-heading">
+        <div class="intro">
+          <div>
+            <h1 id="input-heading" tabindex="-1">Keep the plan.<br>Change what <em>needs to.</em></h1>
+            <p class="intro-copy">Put the original next to the update. Cambio finds related instructions; you choose what belongs in the next version.</p>
+          </div>
+          <div class="intro-note">
+            <svg viewBox="0 0 96 62" width="96" height="62" fill="none" aria-hidden="true"><path d="M3 46c24 0 25-30 49-30h36m0 0L77 5m11 11L77 27" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 32v18h26V32M59 38h12m-12 5h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <p>A useful match.<br><strong>The final say is yours.</strong></p>
+          </div>
+        </div>
+
+        <form id="plan-form" novalidate>
+          <div class="input-pair">
+            <div class="plan-sheet original-sheet">
+              <div class="sheet-heading">
+                <div><span class="sheet-context">Before</span><label for="original-plan">The original plan</label></div>
+                <span class="required-note">Required</span>
+              </div>
+              <textarea id="original-plan" name="original" rows="8" required aria-describedby="original-help" placeholder="Meet at the main entrance at 9 am.&#10;Bring printed copies of the proposal.&#10;Send the notes to the whole team." spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+              <p id="original-help" class="sheet-help">What you were going to do. One instruction per line.</p>
+            </div>
+
+            <div class="sheet-connection" aria-hidden="true">
+              <svg viewBox="0 0 28 28" width="28" height="28" fill="none"><path d="M5 14h18m-7-7 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+            <div class="plan-sheet update-sheet">
+              <div class="sheet-heading">
+                <div><span class="sheet-context">What changed</span><label for="updates-plan">The latest instructions</label></div>
+                <span class="required-note">Required</span>
+              </div>
+              <textarea id="updates-plan" name="updates" rows="8" required aria-describedby="updates-help" placeholder="The meeting now starts at 10 am.&#10;Share the proposal as a PDF instead.&#10;Book a room for the follow-up session." spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+              <p id="updates-help" class="sheet-help">What arrived later. One update per line.</p>
+            </div>
+          </div>
+
+          <div class="input-actions">
+            <p class="format-note">English · up to 20 lines per list · 300 characters per line.</p>
+            <div class="action-group">
+              <button id="load-example" class="button button-quiet" type="button">Try an example</button>
+              <button id="analyze-button" class="button button-primary" type="submit">
+                <span>Find related instructions</span>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="model-status" class="model-status" role="status" hidden>
+            <div class="status-copy"><strong id="model-status-text">Getting the local model ready…</strong><span>The first download can take a little time. Your text stays here.</span></div>
+            <progress id="model-progress" max="100" aria-label="Model download progress"></progress>
+          </div>
+          <p id="input-error" class="notice notice-error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section id="review-view" class="view review-view" aria-labelledby="review-heading" hidden>
+        <div class="view-heading">
+          <div><p class="section-context">One change at a time</p><h1 id="review-heading" tabindex="-1">What belongs in the next plan?</h1></div>
+          <button id="back-button" class="button button-quiet" type="button"><span aria-hidden="true">←</span> Edit the inputs</button>
+        </div>
+
+        <div class="review-progress-row">
+          <span id="review-count">Ready to review</span>
+          <progress id="review-progress" max="1" value="0" aria-label="Updates reviewed"></progress>
+          <button id="undo-button" class="button button-compact button-quiet" type="button" disabled>
+            <svg viewBox="0 0 20 20" width="17" height="17" fill="none" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h8a5 5 0 0 1 0 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Undo last decision
+          </button>
+        </div>
+
+        <div class="review-layout">
+          <div class="review-workspace">
+            <nav class="review-navigation" aria-label="Navigate updates">
+              <button id="previous-update" class="button button-compact button-quiet" type="button">← Previous update</button>
+              <button id="next-update" class="button button-compact button-quiet" type="button">Next update →</button>
+              <button id="show-result" class="button button-compact button-quiet" type="button" hidden>View final plan</button>
+            </nav>
+            <div id="review-card" class="comparison">
+              <div class="comparison-source">
+                <div class="comparison-heading"><span class="sheet-context">In your original plan</span><span class="source-marker" aria-hidden="true">Before</span></div>
+                <label class="select-label" for="candidate-select">Compare with</label>
+                <select id="candidate-select" aria-describedby="match-note"><option value="">Choose a related instruction</option></select>
+                <blockquote id="source-text" class="instruction-text">Select an instruction to compare.</blockquote>
+                <p id="match-note" class="match-note">A suggested match is a starting point. Check that both instructions refer to the same thing.</p>
+              </div>
+              <div class="comparison-update">
+                <div class="comparison-heading"><span class="sheet-context">Incoming update</span><span id="update-number" class="update-number"></span></div>
+                <div class="comparison-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <blockquote id="update-text" class="instruction-text" tabindex="-1">Your next update appears here.</blockquote>
+                <p class="update-note">Decide what this changes. Similar wording alone is not enough.</p>
+              </div>
+            </div>
+
+            <div class="decision-area">
+              <label class="confirm-check" for="source-confirm">
+                <input id="source-confirm" type="checkbox">
+                <span>I checked the original source. This update replaces the selected instruction.</span>
+              </label>
+              <div class="decision-buttons" aria-label="Choose what to do with this update">
+                <button id="replace-button" class="decision-button decision-replace" type="button" disabled>
+                  <span class="decision-name"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" aria-hidden="true"><path d="M4 7h14m-4-4 4 4-4 4M18 15H4m4-4-4 4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Replace</span>
+                  <span class="decision-description">Update the selected line</span>
+                </button>
+                <button id="add-button" class="decision-button decision-add" type="button">
+                  <span class="decision-name"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" aria-hidden="true"><path d="M11 4v14M4 11h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Add</span>
+                  <span class="decision-description">Keep both instructions</span>
+                </button>
+                <button id="ignore-button" class="decision-button decision-ignore" type="button">
+                  <span class="decision-name"><svg viewBox="0 0 22 22" width="20" height="20" fill="none" aria-hidden="true"><path d="M4 11h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Ignore</span>
+                  <span class="decision-description">Leave the plan as it is</span>
+                </button>
+              </div>
+              <p class="decision-hint">Nothing changes until you choose. You can undo your last decision.</p>
+              <p id="current-decision" class="decision-hint">No decision yet.</p>
+              <p id="review-error" class="notice notice-error" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <aside class="preview-panel" aria-labelledby="preview-heading">
+            <div class="preview-header"><h2 id="preview-heading">The plan, so far</h2><span id="preview-count" class="count-badge"></span></div>
+            <p class="preview-intro">Your decisions take shape here.</p>
+            <ol id="plan-preview" class="plan-list preview-list"><li class="empty-placeholder">Your original plan will appear here when the review starts.</li></ol>
+            <div class="preview-footnote"><span class="preview-dot" aria-hidden="true"></span><span>Only the changes you choose.</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="complete-view" class="view complete-view" aria-labelledby="complete-heading" hidden>
+        <div class="view-heading complete-heading">
+          <div><p class="section-context"><span class="completion-check" aria-hidden="true">✓</span> All changes reviewed</p><h1 id="complete-heading" tabindex="-1">A plan you can move with.</h1><p class="complete-intro">One clear version, with your decisions in place. Give it a final read before you take it with you.</p></div>
+          <button id="review-again" class="button button-quiet" type="button"><span aria-hidden="true">←</span> Return to review</button>
+        </div>
+        <div class="complete-layout">
+          <article class="final-sheet" aria-labelledby="final-plan-heading">
+            <div class="final-sheet-heading"><h2 id="final-plan-heading">Your next plan</h2><svg class="final-mark" viewBox="0 0 40 40" width="40" height="40" fill="none" aria-hidden="true"><path d="M8 4h17v25H8z" fill="currentColor" opacity=".16"/><path d="M15 11h17v25H15z" fill="currentColor"/><path d="m19 22 4 4 7-8" stroke="var(--paper)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <ol id="final-plan" class="plan-list final-list"></ol>
+            <p id="decision-summary" class="decision-summary">Your review is complete.</p>
+          </article>
+          <aside class="export-panel" aria-labelledby="export-heading">
+            <span class="export-flourish" aria-hidden="true">↗</span>
+            <h2 id="export-heading">Ready for<br>what comes next.</h2>
+            <p>Save a clean text copy, or keep the decisions alongside it in a JSON file.</p>
+            <div class="export-actions">
+              <button id="export-txt" class="button button-paper" type="button"><span>Save plan as .txt</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 17v4h14v-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button id="export-json" class="button button-outline-light" type="button">Save plan + decisions as .json</button>
+            </div>
+            <p class="export-note">JSON includes both original inputs. Check for private details before sharing it.</p>
+          </aside>
+        </div>
+        <div class="start-over-row"><p>Another change of plan?</p><button id="reset-button" class="button button-quiet" type="button">Start a new comparison <span aria-hidden="true">→</span></button></div>
+      </section>
+
+      <details id="privacy-panel" class="privacy-panel">
+        <summary>
+          <span class="privacy-summary-copy"><strong>A little assistance. Your judgement.</strong><span>How local matching works, and where to be careful.</span></span>
+          <span class="disclosure-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="privacy-content">
+          <div><h2>Your text stays here.</h2><p>Instructions are processed in this browser. Cambio does not upload your plans to a server.</p></div>
+          <div><h2>The model finds relationships.</h2><p>Open-source MiniLM compares meaning to suggest related lines. It does not verify facts or decide which instruction is right. Check the original source yourself.</p></div>
+          <div><h2>Keep the scope small.</h2><p>Made for short plans in English. Model assets download from Hugging Face on first use; that request exposes connection details such as your IP, not your instructions. Browser caching may reduce later downloads. Reloading discards your unsaved plan.</p></div>
+        </div>
+      </details>
+    </main>
+
+    <footer class="site-footer shell"><span class="footer-brand">Cambio.</span><p>A quieter way to get from before to after.</p><span class="footer-line" aria-hidden="true"></span><span class="footer-arrow" aria-hidden="true">→</span></footer>
+    <p id="live-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    <noscript><div class="noscript-notice">Cambio needs JavaScript to run the model and review your plans. Enable JavaScript, then reload this page.</div></noscript>
+  </body>
+</html>

@@ -1,0 +1,2446 @@
+{
+  "version": "cambio-retrieval-evaluation-v3",
+  "completedAt": "2026-10-20T02:10:20.886Z",
+  "split": "heldout",
+  "frozenManifestSha256": "9b11b19757fa44340d1dd6fe9b5382e25c803a8574ed0d57f049e2f8e800a026",
+  "policy": {
+    "minSimilarity": 0.45,
+    "minGap": 0.08,
+    "candidates": 3,
+    "version": "2026-10-19-v2"
+  },
+  "cases": 10,
+  "updates": 30,
+  "minilm": {
+    "singleTop1": {
+      "numerator": 18,
+      "denominator": 21,
+      "value": 0.8571428571428571
+    },
+    "singleRecallAt2": {
+      "numerator": 20,
+      "denominator": 21,
+      "value": 0.9523809523809523
+    },
+    "singleRecallAt3": {
+      "numerator": 20,
+      "denominator": 21,
+      "value": 0.9523809523809523
+    },
+    "selectedFractionOfAll": {
+      "numerator": 18,
+      "denominator": 30,
+      "value": 0.6
+    },
+    "selectiveAlignmentPrecision": {
+      "numerator": 14,
+      "denominator": 18,
+      "value": 0.7777777777777778
+    },
+    "strictUnambiguousSelectionPrecision": {
+      "numerator": 11,
+      "denominator": 18,
+      "value": 0.6111111111111112
+    },
+    "clearSingleCoverage": {
+      "numerator": 11,
+      "denominator": 16,
+      "value": 0.6875
+    },
+    "falseAssociationOnNoTarget": {
+      "numerator": 3,
+      "denominator": 6,
+      "value": 0.5
+    },
+    "alternativesHitAnyAt2": {
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1
+    },
+    "alternativesNotHighlighted": {
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1
+    },
+    "multipleRecallAllAt2": {
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1
+    },
+    "multipleNotHighlighted": {
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1
+    }
+  },
+  "jaccard": {
+    "singleTop1": {
+      "numerator": 19,
+      "denominator": 21,
+      "value": 0.9047619047619048
+    },
+    "singleRecallAt2": {
+      "numerator": 20,
+      "denominator": 21,
+      "value": 0.9523809523809523
+    },
+    "singleRecallAt3": {
+      "numerator": 21,
+      "denominator": 21,
+      "value": 1
+    },
+    "selectedFractionOfAll": {
+      "numerator": 10,
+      "denominator": 30,
+      "value": 0.3333333333333333
+    },
+    "selectiveAlignmentPrecision": {
+      "numerator": 10,
+      "denominator": 10,
+      "value": 1
+    },
+    "strictUnambiguousSelectionPrecision": {
+      "numerator": 8,
+      "denominator": 10,
+      "value": 0.8
+    },
+    "clearSingleCoverage": {
+      "numerator": 8,
+      "denominator": 16,
+      "value": 0.5
+    },
+    "falseAssociationOnNoTarget": {
+      "numerator": 0,
+      "denominator": 6,
+      "value": 0
+    },
+    "alternativesHitAnyAt2": {
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1
+    },
+    "alternativesNotHighlighted": {
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1
+    },
+    "multipleRecallAllAt2": {
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1
+    },
+    "multipleNotHighlighted": {
+      "numerator": 1,
+      "denominator": 1,
+      "value": 1
+    }
+  },
+  "diagnostics": {
+    "ambiguousWarningRecall": {
+      "numerator": 5,
+      "denominator": 8,
+      "value": 0.625
+    },
+    "warningsOnGoldNonAmbiguous": {
+      "numerator": 7,
+      "denominator": 22,
+      "value": 0.3181818181818182
+    },
+    "cancellationCasesWarned": {
+      "numerator": 4,
+      "denominator": 4,
+      "value": 1
+    },
+    "limitation": "The engine exposes ambiguous and conditional flags, not a semantic cancellation detector. These numbers describe caution on annotated cases, not cancellation accuracy."
+  },
+  "timing": {
+    "loadFromLocalDiskMs": 128.6976,
+    "caseTimings": [
+      {
+        "caseId": "heldout-01",
+        "lineCount": 7,
+        "elapsedMs": 42.3484
+      },
+      {
+        "caseId": "heldout-02",
+        "lineCount": 7,
+        "elapsedMs": 7.5761
+      },
+      {
+        "caseId": "heldout-03",
+        "lineCount": 7,
+        "elapsedMs": 3.8392
+      },
+      {
+        "caseId": "heldout-04",
+        "lineCount": 7,
+        "elapsedMs": 4.3909
+      },
+      {
+        "caseId": "heldout-05",
+        "lineCount": 7,
+        "elapsedMs": 6.4885
+      },
+      {
+        "caseId": "heldout-06",
+        "lineCount": 7,
+        "elapsedMs": 4.1559
+      },
+      {
+        "caseId": "heldout-07",
+        "lineCount": 7,
+        "elapsedMs": 3.9303
+      },
+      {
+        "caseId": "heldout-08",
+        "lineCount": 7,
+        "elapsedMs": 5.4338
+      },
+      {
+        "caseId": "heldout-09",
+        "lineCount": 7,
+        "elapsedMs": 21.2116
+      },
+      {
+        "caseId": "heldout-10",
+        "lineCount": 7,
+        "elapsedMs": 26.6094
+      }
+    ],
+    "limitation": "Node CPU batch timings; not browser or human-use timings. No cold network download occurred."
+  },
+  "blockedFetchCalls": 0,
+  "verifiedUnchanged": [
+    "engine source",
+    "worker source",
+    "runner source",
+    "data files",
+    "q8 ONNX and tokenizer/config files"
+  ],
+  "materialFindings": [
+    {
+      "caseId": "heldout-01",
+      "updateIndex": 0,
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Role is the target; the new destination duplicates a different role's old destination."
+      },
+      "actual": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.705022
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.6753
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.389746
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      }
+    },
+    {
+      "caseId": "heldout-02",
+      "updateIndex": 2,
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [],
+        "note": "A book announcement is not a replacement for the book-return instruction."
+      },
+      "actual": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.664261
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.437944
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.154696
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-06",
+      "updateIndex": 1,
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "add",
+        "warning_labels": [],
+        "note": "New item does not replace camera merely because bring is shared."
+      },
+      "actual": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.460183
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.297768
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.265793
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-07",
+      "updateIndex": 1,
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          2
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Reverses the visitors' badge requirement, not a cancellation."
+      },
+      "actual": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.692267
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.570104
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.557883
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-07",
+      "updateIndex": 2,
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "partial_scope"
+        ],
+        "note": "Only Desk A changes; original line governs every badge desk."
+      },
+      "actual": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.728259
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.34037
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.335111
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-08",
+      "updateIndex": 0,
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conflicting_updates"
+        ],
+        "note": "Both update lines target one original. Order is visible, but final resolution must be explicit."
+      },
+      "actual": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.969026
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.373629
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.246984
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-08",
+      "updateIndex": 1,
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conflicting_updates"
+        ],
+        "note": "A later correction must not silently overwrite a human decision on the earlier update."
+      },
+      "actual": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.875712
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.409701
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.273705
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    },
+    {
+      "caseId": "heldout-09",
+      "updateIndex": 0,
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conditional",
+          "unconfirmed"
+        ],
+        "note": "Possible postponement is not an actual cancellation."
+      },
+      "actual": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.507363
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.395088
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.262216
+          }
+        ],
+        "ambiguous": true,
+        "conditional": true,
+        "scoreMarginEligible": true,
+        "highlighted": false
+      }
+    },
+    {
+      "caseId": "heldout-10",
+      "updateIndex": 1,
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [],
+        "note": "Public park is not car parking; shared park and hall tokens are misleading."
+      },
+      "actual": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.613717
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.149775
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.112154
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      }
+    }
+  ],
+  "limitations": [
+    "20 synthetic case pairs total; this report evaluates only its stated split. Labels are agent-authored, not a real-user study.",
+    "Similarity is retrieval, not entailment, contradiction detection, correctness or permission to replace.",
+    "The heldout author knows the labels; this is an implementer-reserved set, not an external blinded benchmark.",
+    "Node CPU is not the deployed browser WASM backend. Quantized model and pooling are the same, but browser parity is untested here.",
+    "Jaccard selection is a score-only diagnostic at fixed uncalibrated thresholds; ranking metrics are the cleaner baseline comparison."
+  ],
+  "rows": [
+    {
+      "caseId": "heldout-01",
+      "updateIndex": 0,
+      "update": "Performers must now enter through the front entrance.",
+      "plan": [
+        "Audience members should use the front entrance.",
+        "Performers should use the stage door.",
+        "The afternoon performance starts at 15:00.",
+        "Collect reserved tickets at the foyer desk."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Role is the target; the new destination duplicates a different role's old destination."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.705022
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.6753
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.389746
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.25
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.166667
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.071429
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-01",
+      "updateIndex": 1,
+      "update": "The afternoon performance will begin at 15:20.",
+      "plan": [
+        "Audience members should use the front entrance.",
+        "Performers should use the stage door.",
+        "The afternoon performance starts at 15:00.",
+        "Collect reserved tickets at the foyer desk."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          2
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Same performance start time."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.934993
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.217279
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.214715
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.5
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.153846
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.076923
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-01",
+      "updateIndex": 2,
+      "update": "Bring a light jacket for the queue.",
+      "plan": [
+        "Audience members should use the front entrance.",
+        "Performers should use the stage door.",
+        "The afternoon performance starts at 15:00.",
+        "Collect reserved tickets at the foyer desk."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "add",
+        "warning_labels": [],
+        "note": "New clothing request, no source target."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.300911
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.251271
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.244904
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.083333
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.076923
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.076923
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-02",
+      "updateIndex": 0,
+      "update": "The zine workshop has moved to Thursday at 17:00.",
+      "plan": [
+        "The zine workshop is on Tuesday at 17:00.",
+        "Bring scissors to the zine workshop.",
+        "Return borrowed books at the circulation desk.",
+        "The printer demonstration is on Wednesday at 17:00."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Date change with identical time to another event."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.88634
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.584065
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.204692
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.461538
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.333333
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.266667
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-02",
+      "updateIndex": 1,
+      "update": "Scissors will be supplied, so you do not need to bring them.",
+      "plan": [
+        "The zine workshop is on Tuesday at 17:00.",
+        "Bring scissors to the zine workshop.",
+        "Return borrowed books at the circulation desk.",
+        "The printer demonstration is on Wednesday at 17:00."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": true,
+        "expected_review": "replace",
+        "warning_labels": [
+          "cancellation"
+        ],
+        "note": "Withdraws the personal scissors requirement."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.542529
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.15343
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.067687
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.2
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-02",
+      "updateIndex": 2,
+      "update": "The circulation desk has a new book about printing.",
+      "plan": [
+        "The zine workshop is on Tuesday at 17:00.",
+        "Bring scissors to the zine workshop.",
+        "Return borrowed books at the circulation desk.",
+        "The printer demonstration is on Wednesday at 17:00."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [],
+        "note": "A book announcement is not a replacement for the book-return instruction."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.664261
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.437944
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.154696
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.230769
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.071429
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.058824
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-03",
+      "updateIndex": 0,
+      "update": "Lamp repairs have been cancelled for this session.",
+      "plan": [
+        "Bicycle repairs are available from 10:00.",
+        "Lamp repairs are available from 10:00.",
+        "The sewing demonstration begins at 12:00.",
+        "Bring your appointment email."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": true,
+        "expected_review": "replace",
+        "warning_labels": [
+          "cancellation"
+        ],
+        "note": "Target must be lamp repairs, not similar bicycle repairs."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.743784
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.366398
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.111151
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.153846
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.071429
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-03",
+      "updateIndex": 1,
+      "update": "The sewing demonstration has not been cancelled.",
+      "plan": [
+        "Bicycle repairs are available from 10:00.",
+        "Lamp repairs are available from 10:00.",
+        "The sewing demonstration begins at 12:00.",
+        "Bring your appointment email."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          2
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [
+          "negated_cancellation"
+        ],
+        "note": "Reassurance of continued activity, not withdrawal."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.524071
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.185179
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.147234
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.272727
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-03",
+      "updateIndex": 2,
+      "update": "Please show the email confirming your appointment.",
+      "plan": [
+        "Bicycle repairs are available from 10:00.",
+        "Lamp repairs are available from 10:00.",
+        "The sewing demonstration begins at 12:00.",
+        "Bring your appointment email."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [],
+        "note": "Equivalent confirmation requirement."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.789273
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.196502
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.175043
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.375
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.076923
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-04",
+      "updateIndex": 0,
+      "update": "It will leave from the town hall instead.",
+      "plan": [
+        "The museum shuttle leaves the library at 08:30.",
+        "The garden shuttle leaves the station at 08:30.",
+        "Bring your shuttle reservation.",
+        "All riders must arrive ten minutes before departure."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0,
+          1
+        ],
+        "alignment": "alternatives",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "ambiguous_reference"
+        ],
+        "note": "It could refer to either shuttle."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.286181
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.272076
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.227638
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.066667
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.066667
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-04",
+      "updateIndex": 1,
+      "update": "The garden shuttle now departs at 08:50.",
+      "plan": [
+        "The museum shuttle leaves the library at 08:30.",
+        "The garden shuttle leaves the station at 08:30.",
+        "Bring your shuttle reservation.",
+        "All riders must arrive ten minutes before departure."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Named shuttle identifies which identical time changes."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.842934
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.584218
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.501564
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.454545
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.333333
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.090909
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-04",
+      "updateIndex": 2,
+      "update": "Pack a refillable drinking bottle.",
+      "plan": [
+        "The museum shuttle leaves the library at 08:30.",
+        "The garden shuttle leaves the station at 08:30.",
+        "Bring your shuttle reservation.",
+        "All riders must arrive ten minutes before departure."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "add",
+        "warning_labels": [],
+        "note": "New packing instruction."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.243202
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.099044
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.060033
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-05",
+      "updateIndex": 0,
+      "update": "We might use Studio Green if the floor in Studio Blue is still wet; we will confirm.",
+      "plan": [
+        "The pottery class takes place in Studio Blue.",
+        "The pottery class starts at 11:00.",
+        "Bring an apron.",
+        "Collect finished pieces the following Saturday."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conditional",
+          "unconfirmed"
+        ],
+        "note": "Related venue information remains contingent."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.363283
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.147309
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.126024
+          }
+        ],
+        "ambiguous": true,
+        "conditional": true,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.210526
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.05
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.047619
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-05",
+      "updateIndex": 1,
+      "update": "The pottery class now starts at 11:30.",
+      "plan": [
+        "The pottery class takes place in Studio Blue.",
+        "The pottery class starts at 11:00.",
+        "Bring an apron.",
+        "Collect finished pieces the following Saturday."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Explicit start-time update."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.961037
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.632341
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.290411
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.666667
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.230769
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.076923
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-05",
+      "updateIndex": 2,
+      "update": "You can collect finished pieces on Sunday instead of Saturday.",
+      "plan": [
+        "The pottery class takes place in Studio Blue.",
+        "The pottery class starts at 11:00.",
+        "Bring an apron.",
+        "Collect finished pieces the following Saturday."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Collection date change refers to finished pieces, not class date."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.834779
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.279425
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.201295
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.333333
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-06",
+      "updateIndex": 0,
+      "update": "Meet the guide beside the station cafe instead.",
+      "plan": [
+        "Meet the guide beside the park cafe.",
+        "Bring your camera.",
+        "Keep camera bags with you.",
+        "The photo review starts at 16:00."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Meeting point changes but remains same task."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.792033
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.210111
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.143597
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.625
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.076923
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-06",
+      "updateIndex": 1,
+      "update": "Bring a sketchbook.",
+      "plan": [
+        "Meet the guide beside the park cafe.",
+        "Bring your camera.",
+        "Keep camera bags with you.",
+        "The photo review starts at 16:00."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "add",
+        "warning_labels": [],
+        "note": "New item does not replace camera merely because bring is shared."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.460183
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.297768
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.265793
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.2
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-06",
+      "updateIndex": 2,
+      "update": "Keep your printed route map with you.",
+      "plan": [
+        "Meet the guide beside the park cafe.",
+        "Bring your camera.",
+        "Keep camera bags with you.",
+        "The photo review starts at 16:00."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "add",
+        "warning_labels": [],
+        "note": "New map requirement does not replace bag custody."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.328114
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.325589
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.274612
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.333333
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.111111
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-07",
+      "updateIndex": 0,
+      "update": "Volunteers should collect green badges at Desk A.",
+      "plan": [
+        "Stallholders collect blue badges at Desk A.",
+        "Volunteers collect green badges at Desk B.",
+        "Visitors do not need a badge.",
+        "Badge desks open at 07:00."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          1
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Volunteer target despite destination matching stallholders."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.913481
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.614243
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.484849
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.666667
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.5
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.076923
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-07",
+      "updateIndex": 1,
+      "update": "Visitors now need a yellow badge from Desk C.",
+      "plan": [
+        "Stallholders collect blue badges at Desk A.",
+        "Volunteers collect green badges at Desk B.",
+        "Visitors do not need a badge.",
+        "Badge desks open at 07:00."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          2
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Reverses the visitors' badge requirement, not a cancellation."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.692267
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.570104
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.557883
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.363636
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.142857
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.071429
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-07",
+      "updateIndex": 2,
+      "update": "Desk A will open at 07:30 instead.",
+      "plan": [
+        "Stallholders collect blue badges at Desk A.",
+        "Volunteers collect green badges at Desk B.",
+        "Visitors do not need a badge.",
+        "Badge desks open at 07:00."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "partial_scope"
+        ],
+        "note": "Only Desk A changes; original line governs every badge desk."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.728259
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.34037
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.335111
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.272727
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.25
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.153846
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-08",
+      "updateIndex": 0,
+      "update": "The strategy tournament begins at 14:00.",
+      "plan": [
+        "The strategy tournament begins at 13:00.",
+        "The puzzle corner closes at 17:00.",
+        "Bring your own dice.",
+        "The card workshop is cancelled."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conflicting_updates"
+        ],
+        "note": "Both update lines target one original. Order is visible, but final resolution must be explicit."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.969026
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.373629
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.246984
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.75
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.272727
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.090909
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-08",
+      "updateIndex": 1,
+      "update": "Correction: the strategy tournament begins at 13:30.",
+      "plan": [
+        "The strategy tournament begins at 13:00.",
+        "The puzzle corner closes at 17:00.",
+        "Bring your own dice.",
+        "The card workshop is cancelled."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conflicting_updates"
+        ],
+        "note": "A later correction must not silently overwrite a human decision on the earlier update."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.875712
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.409701
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.273705
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.666667
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.153846
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.083333
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-08",
+      "updateIndex": 2,
+      "update": "The card workshop is no longer cancelled.",
+      "plan": [
+        "The strategy tournament begins at 13:00.",
+        "The puzzle corner closes at 17:00.",
+        "Bring your own dice.",
+        "The card workshop is cancelled."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [
+          "negated_cancellation"
+        ],
+        "note": "Restores a previously cancelled workshop."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.950747
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.250645
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.226876
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.714286
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.076923
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.076923
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-09",
+      "updateIndex": 0,
+      "update": "If the forecast changes, we could postpone the picnic; no decision has been made.",
+      "plan": [
+        "The picnic begins at 12:00 in Oak Park.",
+        "Bring folding chairs.",
+        "Bring a picnic blanket.",
+        "The organizer will supply cups."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0
+        ],
+        "alignment": "single",
+        "ambiguous": true,
+        "cancellation": false,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "conditional",
+          "unconfirmed"
+        ],
+        "note": "Possible postponement is not an actual cancellation."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.507363
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.395088
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.262216
+          }
+        ],
+        "ambiguous": true,
+        "conditional": true,
+        "scoreMarginEligible": true,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.1
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.0625
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.058824
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-09",
+      "updateIndex": 1,
+      "update": "You no longer need to bring chairs or a blanket.",
+      "plan": [
+        "The picnic begins at 12:00 in Oak Park.",
+        "Bring folding chairs.",
+        "Bring a picnic blanket.",
+        "The organizer will supply cups."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [
+          1,
+          2
+        ],
+        "alignment": "multiple_required",
+        "ambiguous": true,
+        "cancellation": true,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "multiple_targets",
+          "cancellation"
+        ],
+        "note": "Withdraws two separate source requirements."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.639195
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.635851
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.253846
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.272727
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.181818
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-09",
+      "updateIndex": 2,
+      "update": "Please bring your own cups after all.",
+      "plan": [
+        "The picnic begins at 12:00 in Oak Park.",
+        "Bring folding chairs.",
+        "Bring a picnic blanket.",
+        "The organizer will supply cups."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Same cups responsibility, changed from organizer to participant."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.536104
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.375711
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.257646
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.111111
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.1
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.090909
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-10",
+      "updateIndex": 0,
+      "update": "The rehearsal is cancelled.",
+      "plan": [
+        "The choir rehearsal begins at 18:30.",
+        "The percussion rehearsal begins at 19:00.",
+        "Use the car park behind the hall.",
+        "Bring a pencil for rehearsal notes."
+      ],
+      "expected": {
+        "update_index": 0,
+        "source_indexes": [
+          0,
+          1
+        ],
+        "alignment": "alternatives",
+        "ambiguous": true,
+        "cancellation": true,
+        "expected_review": "resolve",
+        "warning_labels": [
+          "ambiguous_reference",
+          "cancellation"
+        ],
+        "note": "Unspecified rehearsal cannot be confidently assigned to choir or percussion."
+      },
+      "minilm": {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.541901
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.47286
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.447447
+          }
+        ],
+        "ambiguous": true,
+        "conditional": false,
+        "scoreMarginEligible": false,
+        "highlighted": false
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.222222
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.222222
+          },
+          {
+            "beforeIndex": 2,
+            "score": 0.111111
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-10",
+      "updateIndex": 1,
+      "update": "The new park beside the hall has opened to the public.",
+      "plan": [
+        "The choir rehearsal begins at 18:30.",
+        "The percussion rehearsal begins at 19:00.",
+        "Use the car park behind the hall.",
+        "Bring a pencil for rehearsal notes."
+      ],
+      "expected": {
+        "update_index": 1,
+        "source_indexes": [],
+        "alignment": "none",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "ignore",
+        "warning_labels": [],
+        "note": "Public park is not car parking; shared park and hall tokens are misleading."
+      },
+      "minilm": {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.613717
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.149775
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.112154
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.25
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.066667
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.066667
+          }
+        ],
+        "highlighted": false,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    },
+    {
+      "caseId": "heldout-10",
+      "updateIndex": 2,
+      "update": "Bring a pen for rehearsal notes instead of a pencil.",
+      "plan": [
+        "The choir rehearsal begins at 18:30.",
+        "The percussion rehearsal begins at 19:00.",
+        "Use the car park behind the hall.",
+        "Bring a pencil for rehearsal notes."
+      ],
+      "expected": {
+        "update_index": 2,
+        "source_indexes": [
+          3
+        ],
+        "alignment": "single",
+        "ambiguous": false,
+        "cancellation": false,
+        "expected_review": "replace",
+        "warning_labels": [],
+        "note": "Explicit replacement of the writing instrument."
+      },
+      "minilm": {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.931776
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.361601
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.282523
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false,
+        "scoreMarginEligible": true,
+        "highlighted": true
+      },
+      "jaccard": {
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.666667
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.066667
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.066667
+          }
+        ],
+        "highlighted": true,
+        "selectionMode": "score-margin only; no engine warnings"
+      }
+    }
+  ]
+}

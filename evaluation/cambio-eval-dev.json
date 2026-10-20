@@ -1,0 +1,574 @@
+{
+  "schema_version": "1.0.0",
+  "created_at": "2026-10-19",
+  "project": "CAMBIO",
+  "provenance": "Original synthetic English scenarios authored by the Codex research_creative agent for this task; no real participants, messages, events or personal data.",
+  "index_base": 0,
+  "unit": "One case is a pair of lists. Every expected entry labels the update at update_index against the original plan array, never against another update.",
+  "label_policy": {
+    "source_indexes": "All source lines that are legitimate alignment targets. Empty means this update has no corresponding instruction in the original plan.",
+    "alignment": "single = one target; alternatives = ambiguous choice among listed targets; multiple_required = the update touches every listed target; none = no target.",
+    "ambiguous": "True when the update needs interpretation/confirmation before a defensible edit, including conditionality, unresolved reference, contradiction or multiple targets.",
+    "cancellation": "True only when the update cancels a positive original activity/obligation, including an ambiguous target. Negating a cancellation is false.",
+    "expected_review": "A human annotation for inspecting examples, not a predicted action or product automation requirement. replace preserves the exact update text as a replacement; resolve means no unreviewed edit is defensible.",
+    "warning_labels": "Semantic test labels, not a claim a keyword rule can detect every case."
+  },
+  "cases": [
+    {
+      "id": "dev-01",
+      "scenario": "Community writing workshop",
+      "language": "en",
+      "plan": [
+        "The writing workshop starts at 10:00 on Saturday.",
+        "Meet in Room Cedar on the first floor.",
+        "Bring a laptop with a charged battery.",
+        "The organizer will provide extension leads.",
+        "Lunch begins at 12:30."
+      ],
+      "updates": [
+        "The writing workshop now starts at 10:30 on Saturday.",
+        "Meet in Room Maple on the second floor instead.",
+        "Please bring a reusable cup."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Same workshop start time with an explicit correction."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Replacement room; the floor changes with the room."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New cup requirement. Laptop and extension-lead instructions are distractors."
+        }
+      ]
+    },
+    {
+      "id": "dev-02",
+      "scenario": "Community fair activities",
+      "language": "en",
+      "plan": [
+        "The welcome talk begins at 09:00.",
+        "The badge-making session runs at 11:00.",
+        "The group lunch starts at 13:00.",
+        "Bring your own water bottle."
+      ],
+      "updates": [
+        "The badge-making session has been cancelled.",
+        "Please bring a bottle of water with you.",
+        "A quiet reading area will be available all day."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "replace",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "Cancellation aligns to the named session; preserve exact cancellation wording for review."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Paraphrase of an existing instruction with no intended change."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "A newly announced facility, not an update to lunch or welcome talk."
+        }
+      ]
+    },
+    {
+      "id": "dev-03",
+      "scenario": "Outdoor sketching class",
+      "language": "en",
+      "plan": [
+        "The sketching class meets in the courtyard.",
+        "The class starts at 14:00.",
+        "Bring a sketchbook.",
+        "Pencils will be provided."
+      ],
+      "updates": [
+        "If it rains, we may move the class to the library; wait for confirmation.",
+        "The class will start at 14:15.",
+        "Bring a small folding stool."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "conditional",
+            "unconfirmed"
+          ],
+          "note": "The venue line is related, but the conditional venue is not confirmed."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Explicit start-time change."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "A new item, despite lexical similarity to bring a sketchbook."
+        }
+      ]
+    },
+    {
+      "id": "dev-04",
+      "scenario": "Different arrival times by role",
+      "language": "en",
+      "plan": [
+        "Volunteer stewards should arrive at 08:15.",
+        "Workshop instructors should arrive at 08:45.",
+        "Participants should arrive at 09:15.",
+        "Everyone should enter through the east gate."
+      ],
+      "updates": [
+        "Workshop instructors should arrive at 08:30 instead.",
+        "Participants should enter through the west gate.",
+        "The volunteer stewards no longer need to come early; arrive at 09:15."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Role attribution matters more than shared arrive wording."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "partial_scope"
+          ],
+          "note": "Only participants change entrance; replacing the everyone instruction loses other roles."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Changes the stewards' time, not their participation; it is not event cancellation."
+        }
+      ]
+    },
+    {
+      "id": "dev-05",
+      "scenario": "Two pickup arrangements",
+      "language": "en",
+      "plan": [
+        "The book pickup is at 15:00 by the front desk.",
+        "The equipment pickup is at 15:30 by the rear door.",
+        "Bring your booking confirmation.",
+        "The building closes at 17:00."
+      ],
+      "updates": [
+        "The pickup is cancelled.",
+        "The equipment pickup will use the front desk.",
+        "Show your booking confirmation when you arrive."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0,
+            1
+          ],
+          "alignment": "alternatives",
+          "ambiguous": true,
+          "cancellation": true,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "ambiguous_reference",
+            "cancellation"
+          ],
+          "note": "No text identifies which pickup is cancelled."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "The noun equipment resolves the target despite a new location matching the book pickup."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Same confirmation requirement in different wording."
+        }
+      ]
+    },
+    {
+      "id": "dev-06",
+      "scenario": "New requirements with similar phrasing",
+      "language": "en",
+      "plan": [
+        "Bring a laptop.",
+        "Bring headphones.",
+        "Leave bicycles at the side entrance.",
+        "The event ends at 16:00."
+      ],
+      "updates": [
+        "Bring a reusable mug.",
+        "Leave umbrellas in the lobby.",
+        "The event will now finish at 16:30."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "Different object: bring syntax alone must not imply replacement."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "add",
+          "warning_labels": [],
+          "note": "New umbrella instruction does not replace bicycle storage."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Finish and end refer to the same event boundary."
+        }
+      ]
+    },
+    {
+      "id": "dev-07",
+      "scenario": "Negation and exact quantities",
+      "language": "en",
+      "plan": [
+        "Bring two printed copies of your draft.",
+        "The feedback round lasts 20 minutes.",
+        "The demo session is cancelled.",
+        "Keep bags under your chair."
+      ],
+      "updates": [
+        "Bring three printed copies of your draft instead of two.",
+        "The demo session is not cancelled after all.",
+        "Do not put bags under your chair; use the cloakroom."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Quantity correction must align even when most tokens are identical."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [
+            "negated_cancellation"
+          ],
+          "note": "Reinstatement is not a cancellation."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "replace",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "The old bag-storage obligation is explicitly withdrawn and replaced."
+        }
+      ]
+    },
+    {
+      "id": "dev-08",
+      "scenario": "Editorial rewrites and irrelevant news",
+      "language": "en",
+      "plan": [
+        "The poetry reading begins at 18:00.",
+        "Use the north entrance.",
+        "Bring your printed ticket.",
+        "The cloakroom opens at 17:30."
+      ],
+      "updates": [
+        "The poetry reading starts at 18:00.",
+        "Please enter from the north side.",
+        "The organizer posted photos of last month's chess tournament."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Editorial synonym only."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            1
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Same entrance instruction."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "ignore",
+          "warning_labels": [],
+          "note": "Unrelated retrospective announcement has no plan target."
+        }
+      ]
+    },
+    {
+      "id": "dev-09",
+      "scenario": "One update touching multiple original instructions",
+      "language": "en",
+      "plan": [
+        "The opening session starts at 09:00.",
+        "The closing session starts at 16:00.",
+        "Both sessions take place in Hall A.",
+        "Bring a notebook."
+      ],
+      "updates": [
+        "The opening session starts at 09:30 and the closing session starts at 16:30.",
+        "Both sessions will take place in Hall B.",
+        "Notebooks are no longer needed."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0,
+            1
+          ],
+          "alignment": "multiple_required",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "multiple_targets"
+          ],
+          "note": "One update modifies two source lines. A one-to-one matcher cannot silently replace both."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "The shared location was already one source line."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            3
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "replace",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "Withdraws the notebook requirement."
+        }
+      ]
+    },
+    {
+      "id": "dev-10",
+      "scenario": "Missing referents and unknown cancelled activity",
+      "language": "en",
+      "plan": [
+        "The morning tour begins at 09:00.",
+        "The afternoon tour begins at 14:00.",
+        "Meet each guide at the main desk.",
+        "The building closes at 18:00."
+      ],
+      "updates": [
+        "That one starts half an hour later.",
+        "The evening concert is cancelled.",
+        "Meet each guide at the side desk instead."
+      ],
+      "expected": [
+        {
+          "update_index": 0,
+          "source_indexes": [
+            0,
+            1
+          ],
+          "alignment": "alternatives",
+          "ambiguous": true,
+          "cancellation": false,
+          "expected_review": "resolve",
+          "warning_labels": [
+            "ambiguous_reference",
+            "relative_time"
+          ],
+          "note": "The plan contains two tours; no referent is specified."
+        },
+        {
+          "update_index": 1,
+          "source_indexes": [],
+          "alignment": "none",
+          "ambiguous": false,
+          "cancellation": true,
+          "expected_review": "add",
+          "warning_labels": [
+            "cancellation"
+          ],
+          "note": "Cancellation of an activity absent from the original plan. Do not attach it to a tour."
+        },
+        {
+          "update_index": 2,
+          "source_indexes": [
+            2
+          ],
+          "alignment": "single",
+          "ambiguous": false,
+          "cancellation": false,
+          "expected_review": "replace",
+          "warning_labels": [],
+          "note": "Explicit change of meeting desk."
+        }
+      ]
+    }
+  ],
+  "split": "dev",
+  "usage": "Use for development, threshold selection and prompt-free pipeline calibration."
+}
+

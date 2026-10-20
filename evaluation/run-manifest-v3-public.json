@@ -1,0 +1,78 @@
+{
+  "version": "cambio-retrieval-evaluation-v3",
+  "frozenAt": "2026-10-20T02:07:22.628Z",
+  "files": {
+    "engine.mjs": "63aa10580d82887720dceb8aca0104a4819fe9f9fd5fdc311b57bd1500fb301b",
+    "model-worker.mjs": "cc2fba3de95d641612e54bc600cb01793b95f4f457815e94ef6882ab71776fe2",
+    "evaluate.mjs": "ca5339d719cd89540e6b7dc33442ba3e29d1ac3113479821a915c74246dccdc8",
+    "package.json": "82c9deb08eabcf3f2fc63a92208513e49600c207a91f4fa3856dbed6b5263836"
+  },
+  "datasets": {
+    "dev": "8634307c5dac4577b6d4b60d61b8ff0d3087f8bcd0f3d37c079c18d758ee24cc",
+    "heldout": "02426df15ab9a452778aa298e78a5629cacedf2568e55052ab5704c7db68b00e"
+  },
+  "modelFiles": {
+    "config.json": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7",
+    "tokenizer.json": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+    "tokenizer_config.json": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3",
+    "onnx/model_quantized.onnx": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+  },
+  "policy": {
+    "minSimilarity": 0.45,
+    "minGap": 0.08,
+    "candidates": 3,
+    "version": "2026-10-19-v2"
+  },
+  "limits": {
+    "lines": 20,
+    "charactersPerLine": 300
+  },
+  "packageVersion": "3.8.1",
+  "runtime": {
+    "entrySha256": "ee3b84624fee88b9db4b85be1fbfde1e2637957ee92eaaaaa720edbca5448e6c",
+    "packageSha256": "00c02ca357bf03c801f33c9a431c0169b99c1de1e14f2134cabc902cce53d4f3"
+  },
+  "model": {
+    "id": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "dtype": "q8",
+    "pooling": "mean",
+    "normalize": true
+  },
+  "evaluationRuntime": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+    "device": "cpu",
+    "backend": "onnxruntime-node CPU",
+    "threads": "runtime default"
+  },
+  "productionRuntime": {
+    "device": "wasm",
+    "threads": 1,
+    "location": "browser Web Worker"
+  },
+  "runtimeLimitation": "This run tests the same q8 weights, pooling and pure ranking engine in Node CPU. It does not validate browser/WASM parity, browser latency or offline browser caching.",
+  "runtimeReuse": "The evaluator may use an explicitly selected existing installation of Transformers 3.8.1 while the product npm install completes. Its exact path and source hashes are recorded. No third-party code or model weights are copied. Product package-lock is not part of this independent runtime fingerprint.",
+  "gitCommit": null,
+  "codeIdentity": "Source SHA-256 hashes identify the exact evaluated files; the project was not a Git repository when this evaluator was prepared.",
+  "protocolDeviation": "Freeze v3 supersedes v2 before any dev or heldout inference: package.json changed only its npm test script to add app-flow.test.mjs. Engine and worker source hashes and ranking policy remain identical to v2. Before any heldout inference, the coordinating agent specified the core thresholds 0.45/0.08/top3. A static review found missing inflections of cancel in the warning regex; core corrected that to v2 before heldout. The earlier synthetic protocol suggested 0.65/0.10 and a dev grid. No grid search or threshold fitting is performed. The actual fixed policy is recorded here, without claiming dev calibration.",
+  "baseline": {
+    "name": "Jaccard",
+    "tokenization": "Unicode letters/numbers/apostrophes; lowercase; set of tokens; retain negations and numbers",
+    "emptySimilarity": 0,
+    "tieBreak": "original source index ascending",
+    "topK": 3,
+    "thresholds": {
+      "minSimilarity": 0.45,
+      "minGap": 0.08
+    },
+    "selection": "Score and margin only. No production warning heuristics. Its selection numbers must not be presented as an equivalent calibrated confidence comparison."
+  },
+  "metricPolicy": "Report retrieval separately from selection and ambiguity warnings. Correct retrieval does not entail the update or authorize an action.",
+  "noNetworkPolicy": "allowRemoteModels=false; local_files_only=true; FS/browser model caches disabled; global fetch throws. Model cache is read only and verified after evaluation.",
+  "heldoutPolicy": "Run dev first. Report material findings before heldout. Heldout output is created exclusively once; never tune on it.",
+  "publicationNote": "Sanitized copy of the original frozen run manifest: only absolute local runtime and model paths were removed. Source, model and dataset hashes remain unchanged. The original private manifest hash is recorded in each results JSON. The public portable runner changes path configuration and reproduction output names; it does not claim to be the original frozen runner."
+}
