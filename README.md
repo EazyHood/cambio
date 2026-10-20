@@ -8,6 +8,8 @@ Built from scratch on 19 October 2026 for the DEV Hacktoberfest Open-Source AI C
 
 ## Try it
 
+[Open the live demo](https://eazyhood.github.io/cambio/) · [Source code](https://github.com/EazyHood/cambio) · [Validation record](VALIDATION.md) · [Model evaluation](evaluation/README.md)
+
 1. Choose **Try an example** for a fictional repair workshop, or enter two short English lists.
 2. Choose **Find related instructions**. The model downloads on first use, then compares lines locally.
 3. For each update, compare its source and choose **Replace**, **Add**, or **Ignore**. Replacing a line requires an explicit check. Uncertain matches do not select a source automatically.
@@ -21,7 +23,7 @@ No account, API key, subscription, or server-side inference. If matching fails, 
 Requires Node.js 22.12+ and npm.
 
 ```sh
-npm ci
+npm ci --ignore-scripts --no-audit --no-fund
 npm run dev
 npm test
 npm run build
@@ -29,6 +31,8 @@ npm run preview
 ```
 
 The development and preview servers bind to `127.0.0.1`. The production build is static and uses relative asset URLs, so it can be hosted in a GitHub Pages subdirectory. A network connection is required to fetch model/runtime assets unless the browser has retained all necessary resources. Full offline operation is not promised.
+
+The static application does not need dependency installation scripts. The command above matches the verified Linux CI build and avoids invoking native-runtime installers that the browser demo does not use. The optional CPU evaluation has its own runtime requirements, described in the evaluation guide.
 
 ## What the model does
 
@@ -67,6 +71,16 @@ The evaluation fixtures are synthetic and were authored with AI assistance. Auto
 - `evaluate.mjs`: reproducible model-vs-token-overlap evaluation on explicit fixtures. This runs real model inference separately from unit tests.
 
 The DOM doubles are not a substitute for browser testing. See `VALIDATION.md` for what was actually run and the limits of those checks.
+
+## Verified behavior
+
+[Production CI](https://github.com/EazyHood/cambio/actions/runs/39358087890) installed the locked dependencies, passed all 32 tests, built the static application and deployed commit `7c6cc8d7ccbefb56fd008700e9fe1332b1fd2da2`. The published demo was then tested in Edge with real q8/WASM inference: two replacements, one addition and one ignored update produced the expected six-line plan. The conditional extension-cable update displayed a caution without preselecting a source. The [downloaded JSON record](evidence/cambio-live-review.json) preserves the exact example, decisions and executed model revision.
+
+The browser export recorded 3,222 ms for this single matching run, including model loading. It is not an inference-only benchmark or a promise about another device. Desktop and a 390 × 844 browser viewport were checked; this was not a physical-phone test. Reduced-motion CSS was inspected, without claiming runtime preference emulation.
+
+The [reserved synthetic evaluation](evaluation/README.md) found an important limitation: MiniLM retrieved the expected single source first in 18/21 cases, versus 19/21 for a token-overlap baseline. It did not outperform that baseline on this measure. That is why related wording stays a suggestion and every change stays a human decision.
+
+![Actual desktop review on the published demo](evidence/cambio-live-review.png)
 
 ## Provenance and license
 

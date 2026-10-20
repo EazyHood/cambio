@@ -1,0 +1,149 @@
+{
+  "schema": "cambio-review-v1",
+  "exportedAt": "2026-10-20T02:21:40.864Z",
+  "before": [
+    "Meet outside the north entrance at 10:00.",
+    "The repair workshop takes place in Room 4.",
+    "Bring your laptop and its charger.",
+    "Lunch is provided at 12:30.",
+    "Leave finished repairs on the blue table."
+  ],
+  "updates": [
+    "Please gather at the north entrance at 10:30 instead.",
+    "The workshop has moved to Room 7.",
+    "Bring an extension cable if you have one.",
+    "Lunch is still provided at 12:30."
+  ],
+  "plan": [
+    "Please gather at the north entrance at 10:30 instead.",
+    "The workshop has moved to Room 7.",
+    "Bring your laptop and its charger.",
+    "Lunch is provided at 12:30.",
+    "Leave finished repairs on the blue table.",
+    "Bring an extension cable if you have one."
+  ],
+  "changes": [
+    {
+      "updateIndex": 0,
+      "action": "replace",
+      "update": "Please gather at the north entrance at 10:30 instead.",
+      "beforeIndex": 0,
+      "previous": "Meet outside the north entrance at 10:00."
+    },
+    {
+      "updateIndex": 1,
+      "action": "replace",
+      "update": "The workshop has moved to Room 7.",
+      "beforeIndex": 1,
+      "previous": "The repair workshop takes place in Room 4."
+    },
+    {
+      "updateIndex": 2,
+      "action": "add",
+      "update": "Bring an extension cable if you have one."
+    },
+    {
+      "updateIndex": 3,
+      "action": "ignore",
+      "update": "Lunch is still provided at 12:30."
+    }
+  ],
+  "matching": {
+    "model": {
+      "id": "Xenova/all-MiniLM-L6-v2",
+      "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+      "dtype": "q8",
+      "device": "wasm",
+      "pooling": "mean",
+      "normalize": true,
+      "license": "Apache-2.0",
+      "executed": true
+    },
+    "elapsedMs": 3222,
+    "policy": {
+      "minSimilarity": 0.45,
+      "minGap": 0.08,
+      "candidates": 3,
+      "version": "2026-10-19-v2"
+    },
+    "rankings": [
+      {
+        "updateIndex": 0,
+        "candidates": [
+          {
+            "beforeIndex": 0,
+            "score": 0.7858526934458627
+          },
+          {
+            "beforeIndex": 3,
+            "score": 0.39731777662541623
+          },
+          {
+            "beforeIndex": 1,
+            "score": 0.17757848903341336
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false
+      },
+      {
+        "updateIndex": 1,
+        "candidates": [
+          {
+            "beforeIndex": 1,
+            "score": 0.7223447318885876
+          },
+          {
+            "beforeIndex": 4,
+            "score": 0.27274083911636016
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.24131160292095688
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false
+      },
+      {
+        "updateIndex": 2,
+        "candidates": [
+          {
+            "beforeIndex": 2,
+            "score": 0.5528251640262123
+          },
+          {
+            "beforeIndex": 4,
+            "score": 0.11058756596097176
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.07523708732255058
+          }
+        ],
+        "ambiguous": true,
+        "conditional": true
+      },
+      {
+        "updateIndex": 3,
+        "candidates": [
+          {
+            "beforeIndex": 3,
+            "score": 0.8704636197572632
+          },
+          {
+            "beforeIndex": 0,
+            "score": 0.32731315468050654
+          },
+          {
+            "beforeIndex": 4,
+            "score": 0.16082487669382817
+          }
+        ],
+        "ambiguous": false,
+        "conditional": false
+      }
+    ]
+  },
+  "note": "Model scores are similarity, not truth or confidence. Every change was selected by the person reviewing."
+}
